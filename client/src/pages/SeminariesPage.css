@@ -1,0 +1,18 @@
+/* עיצוב מחודש — מדרשיות (גוף העמוד; כותרת ב-pageHero.css) */
+
+.page--seminaries .seminaryCard {
+  border-color: rgba(129, 140, 248, 0.15);
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.08);
+}
+
+.page--seminaries .seminaryCard__title {
+  color: #312e81;
+}
+
+.page--seminaries .seminaryCard__location {
+  color: #6366f1;
+}
+
+.page--seminaries .seminariesResultsSummary {
+  color: #475569;
+}

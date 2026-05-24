@@ -1,0 +1,528 @@
+/* —— עמודי התחברות / הרשמה — ממורכז —— */
+
+.authPage {
+  --auth-accent: var(--site-accent);
+  --auth-accent-deep: var(--site-accent-deep);
+  --auth-accent-soft: var(--site-accent-soft);
+  --auth-ink: #0f172a;
+  --auth-muted: #64748b;
+  --auth-border: rgba(15, 23, 42, 0.08);
+  --auth-radius: 14px;
+  --auth-card-max: 440px;
+
+  position: relative;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 20px 40px;
+  overflow-x: clip;
+  overflow-y: auto;
+  background: linear-gradient(165deg, #f5f3ff 0%, #eef2ff 35%, #faf5ff 70%, #f8fafc 100%);
+}
+
+.authPage--wide {
+  --auth-card-max: 520px;
+}
+
+/* אורות רקע עדינים */
+.authPage__glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+.authPage__glow--1 {
+  width: min(420px, 70vw);
+  height: min(420px, 70vw);
+  top: -8%;
+  right: -5%;
+  background: rgba(167, 139, 250, 0.35);
+}
+
+.authPage__glow--2 {
+  width: min(360px, 60vw);
+  height: min(360px, 60vw);
+  bottom: -5%;
+  left: -8%;
+  background: rgba(129, 140, 248, 0.28);
+}
+
+.authPage__center {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: calc(var(--auth-card-max) + 80px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* כותרת עליונה — לוגו + תגיות */
+.authPage__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.authPage__hero .batLogo {
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.authPage__hero .batLogo__text {
+  align-items: center;
+}
+
+.authPage__logo {
+  margin-bottom: 0;
+}
+
+.authPage__tagline {
+  margin: 0;
+  max-width: 36ch;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: rgba(49, 46, 129, 0.75);
+}
+
+.authPage__chips {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.authPage__chips li {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #4338ca;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .authPage__chips li {
+    white-space: normal;
+    text-align: center;
+    font-size: 0.72rem;
+  }
+}
+
+/* כרטיס הטופס — במרכז */
+.authCard {
+  width: 100%;
+  max-width: var(--auth-card-max);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  box-shadow:
+    0 4px 6px -1px rgba(15, 23, 42, 0.06),
+    0 20px 50px -12px rgba(79, 70, 229, 0.22),
+    0 0 0 1px rgba(99, 102, 241, 0.06);
+  overflow: visible;
+}
+
+.authCard__head {
+  padding: 28px 28px 0;
+  text-align: center;
+  border-bottom: 1px solid var(--auth-border);
+  padding-bottom: 20px;
+  margin-bottom: 4px;
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.04) 0%, transparent 100%);
+}
+
+.authCard__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 950;
+  color: var(--auth-ink);
+  letter-spacing: -0.02em;
+}
+
+.authCard__subtitle {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--auth-muted);
+}
+
+.authCard__body {
+  padding: 22px 28px 10px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.authCard__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 18px 28px 24px;
+  border-top: 1px solid var(--auth-border);
+  background: rgba(248, 250, 252, 0.6);
+}
+
+.authCard__footText {
+  font-size: 0.9rem;
+  color: var(--auth-muted);
+  font-weight: 600;
+}
+
+.authCard__footLink {
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--auth-accent-deep);
+  text-decoration: none;
+}
+
+.authCard__footLink:hover {
+  text-decoration: underline;
+}
+
+/* טופס */
+.form {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  justify-items: stretch;
+}
+
+.authSection {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: grid;
+  gap: 18px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.authSection + .authSection {
+  border-top: 1px dashed rgba(99, 102, 241, 0.22);
+  margin-top: 6px;
+  padding-top: 24px;
+}
+
+.authSection__legend {
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: var(--auth-accent-deep);
+  padding: 0 2px 4px;
+  margin-bottom: 2px;
+  width: 100%;
+  text-align: right;
+}
+
+.form__row + .form__row {
+  margin-top: 0;
+}
+
+/* שני שדות בשורה — רק במסך רחב מספיק */
+.form__grid2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+@media (min-width: 640px) {
+  .form__grid2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 639px) {
+  .authCard__head,
+  .authCard__body,
+  .authCard__foot {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.authPage .label {
+  color: var(--auth-ink);
+}
+
+.input2 {
+  height: 46px;
+  border-radius: var(--auth-radius);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  padding: 0 14px;
+  font-size: 0.95rem;
+  outline: none;
+  background: #fff;
+  color: var(--auth-ink);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.authPage .input2:not([type="email"]):not([type="password"]):not([type="url"]):not([type="tel"]) {
+  direction: rtl;
+  text-align: right;
+}
+
+.authPage .input2[type="email"],
+.authPage .input2[type="password"],
+.authPage .input2[type="url"],
+.authPage .input2[type="tel"] {
+  direction: ltr;
+  text-align: left;
+}
+
+.input2::placeholder {
+  color: #94a3b8;
+}
+
+.input2:focus {
+  border-color: var(--auth-accent);
+  box-shadow: 0 0 0 4px var(--auth-accent-soft);
+}
+
+.input2:disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+select.input2 {
+  cursor: pointer;
+}
+
+.actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  justify-items: stretch;
+}
+
+.actions--stack {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.actions--stack .link--btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 18px;
+  border-radius: var(--auth-radius);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: #fff;
+  color: var(--auth-accent-deep);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.actions--stack .link--btn:hover {
+  background: var(--auth-accent-soft);
+  text-decoration: none;
+}
+
+/* כפתורים — styles/siteButtons.css (.authPage .btn2) */
+
+.link {
+  color: var(--auth-accent-deep);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link--sm {
+  font-size: 0.82rem;
+}
+
+.alert {
+  padding: 12px 14px;
+  border-radius: var(--auth-radius);
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+.alert p {
+  margin: 0;
+}
+
+.alert p + p {
+  margin-top: 8px;
+}
+
+.errorBox,
+.alert--error {
+  background: rgba(239, 68, 68, 0.07);
+  border: 1px solid rgba(239, 68, 68, 0.28);
+  color: #991b1b;
+}
+
+.warnBox,
+.alert--warn {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(217, 119, 6, 0.32);
+  color: #92400e;
+}
+
+.successBox,
+.alert--success {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #14532d;
+}
+
+.profileBlock {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 18px;
+  margin-top: 4px;
+  border-radius: var(--auth-radius);
+  background: linear-gradient(145deg, rgba(99, 102, 241, 0.07), rgba(167, 139, 250, 0.1));
+  border: 1px solid rgba(99, 102, 241, 0.16);
+}
+
+.profileBlock__fields {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+
+@media (max-width: 520px) {
+  .profileBlock {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .profileBlock__fields {
+    width: 100%;
+  }
+
+  .filePick {
+    width: 100%;
+  }
+}
+
+.filePick {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px dashed rgba(99, 102, 241, 0.45);
+  color: var(--auth-accent-deep);
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.filePick:hover {
+  background: var(--auth-accent-soft);
+  border-color: var(--auth-accent);
+}
+
+.filePick input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.profileHint {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--auth-muted);
+}
+
+.profileHint--ok {
+  color: #15803d;
+  font-weight: 700;
+}
+
+.profileHint--fail {
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+.profileHint--pending {
+  color: #a16207;
+  font-weight: 700;
+}
+
+.muted2 {
+  font-size: 0.82rem;
+  color: var(--auth-muted);
+  line-height: 1.45;
+}
+
+.auth__devLink .link {
+  word-break: break-all;
+}
+
+.profilePreview {
+  display: contents;
+}
+
+.actions--stack .btn2,
+.actions--stack a.btn2,
+.actions--stack .siteBtn,
+.actions--stack a.siteBtn,
+.actions--stack .auth__backBtn {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+

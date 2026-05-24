@@ -1,0 +1,102 @@
+/**
+ * פריסת טפסים RTL — תווית מעל השדה, מיושרת לימין (כמו tooltip).
+ */
+
+.form__row,
+.field,
+.dashField {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  direction: rtl;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.field--wide {
+  grid-column: 1 / -1;
+}
+
+/* תווית מעל — צמודה לימין מעל האינפוט */
+.form__row > .label,
+.field > .label,
+.dashField > .label {
+  align-self: flex-end;
+  width: auto;
+  max-width: 100%;
+  margin: 0 0 1px;
+  padding: 0 2px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  color: #475569;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.authPage .form__row > .label,
+.authPage .field > .label {
+  color: #334155;
+}
+
+.form__rowValue {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+}
+
+.form__rowMeta {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.form__row > .input2,
+.form__row > select.input2,
+.form__row > input:not([type="checkbox"]):not([type="radio"]),
+.form__row > textarea,
+.form__rowValue,
+.field > .input,
+.field > select,
+.field > textarea,
+.dashField > .input,
+.dashField > textarea,
+.dashField > select {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-inline: 0;
+  box-sizing: border-box;
+}
+
+.form__row > .input2,
+.form__row > select.input2,
+.form__row > input:not([type="checkbox"]):not([type="radio"]),
+.form__row > textarea,
+.form__rowValue > .input2,
+.form__rowValue > select.input2,
+.form__rowValue > input,
+.form__rowValue > textarea,
+.field > .input,
+.field > select,
+.field > textarea,
+.dashField > .input,
+.dashField > textarea,
+.dashField > select {
+  display: block;
+}
+
+.form__row .muted2,
+.form__rowValue .muted2 {
+  margin: 0;
+  text-align: right;
+  font-size: 0.82rem;
+  white-space: normal;
+}

@@ -1,0 +1,242 @@
+/**
+ * כותרת עליונה לעמודים — צבעי הסרגל (--site-nav-bg)
+ */
+
+.pageHero {
+  --page-hero-pad-x: clamp(18px, 3vw, 28px);
+  --page-hero-pad-y: clamp(22px, 4vw, 32px);
+
+  position: relative;
+  margin: 0 0 20px;
+  padding: var(--page-hero-pad-y) var(--page-hero-pad-x);
+  background: var(--site-nav-bg, #0f172a);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--site-radius-lg, 14px);
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.18);
+  overflow: hidden;
+}
+
+.pageHero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(620px 240px at 0% 0%, rgba(99, 102, 241, 0.32), transparent 58%),
+    radial-gradient(480px 200px at 100% 0%, rgba(129, 140, 248, 0.14), transparent 52%);
+}
+
+.pageHero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pageHero__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px 20px;
+}
+
+.pageHero__kicker {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c4b5fd;
+}
+
+.pageHero__title {
+  margin: 0 0 10px;
+  font-size: clamp(1.45rem, 3.2vw, 2rem);
+  font-weight: 950;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.pageHero__lead {
+  margin: 0;
+  max-width: 62ch;
+  font-size: clamp(14px, 2vw, 16px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.pageHero__stat,
+.pageHero__badge {
+  flex-shrink: 0;
+  align-self: flex-start;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+  background: var(--site-accent-hover, rgba(99, 102, 241, 0.22));
+  border: 1px solid rgba(129, 140, 248, 0.45);
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* חיפוש / טופס בתוך הכותרת (מדרשיות) */
+.pageHero__searchRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  max-width: 920px;
+  margin-top: 18px;
+}
+
+.pageHero__searchField {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--site-ghost-bg, rgba(255, 255, 255, 0.08));
+  border: 1px solid var(--site-ghost-border, rgba(255, 255, 255, 0.18));
+}
+
+.pageHero__searchLabel {
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.pageHero__searchInput {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.96);
+  color: #0f172a;
+  font: inherit;
+  font-size: 15px;
+}
+
+.pageHero__searchInput:focus {
+  outline: none;
+  border-color: var(--site-accent, #6366f1);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.35);
+}
+
+.pageHero__searchBtn {
+  flex: 0 0 auto;
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 2px;
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  background: var(--site-accent-bg, rgba(99, 102, 241, 0.92));
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+  transition: filter 0.15s ease, transform 0.1s ease;
+}
+
+.pageHero__searchBtn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.pageHero__searchBtn:active {
+  transform: translateY(0);
+}
+
+.pageHero__searchIcon {
+  display: block;
+}
+
+/* וריאנטים */
+.pageHero--compact {
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+
+.pageHero--compact .pageHero__title {
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  margin-bottom: 6px;
+}
+
+.pageHero--fullBleed {
+  margin-left: calc(-1 * var(--page-gutter, 18px));
+  margin-right: calc(-1 * var(--page-gutter, 18px));
+  border-radius: 0 0 18px 18px;
+  border-left: 0;
+  border-right: 0;
+}
+
+/* לוח ניהול — כותרת כמו שאר העמודים */
+.dash__hero.pageHero {
+  margin-bottom: 20px;
+  padding: var(--page-hero-pad-y) var(--page-hero-pad-x);
+  border-bottom: none;
+  border-radius: var(--site-radius-lg, 14px);
+}
+
+.dash__hero.pageHero .dash__title,
+.dash__hero.pageHero .pageHero__title {
+  margin: 0 0 8px;
+  font-size: clamp(1.35rem, 2.8vw, 1.65rem);
+  font-weight: 950;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.dash__hero.pageHero .dash__subtitle,
+.dash__hero.pageHero .pageHero__lead {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.dash__hero.pageHero .dash__stat {
+  background: var(--site-accent-hover);
+  border-color: rgba(129, 140, 248, 0.45);
+  color: #fff;
+}
+
+.pageHero--center .pageHero__inner {
+  text-align: center;
+}
+
+.pageHero--center .pageHero__lead {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pageHero .qaPageShell__inlineLink {
+  color: #c4b5fd;
+  font-weight: 800;
+}
+
+.pageHero .qaPageShell__inlineLink:hover {
+  color: #e9d5ff;
+}
+
+.about.pageHero--fullBleed,
+.about .pageHero--fullBleed {
+  --page-gutter: 18px;
+}
+
+@media (max-width: 640px) {
+  .pageHero__searchRow {
+    flex-direction: column;
+  }
+
+  .pageHero__searchBtn {
+    align-self: stretch;
+    width: 100%;
+    height: 48px;
+  }
+}

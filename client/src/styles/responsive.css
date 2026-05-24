@@ -1,0 +1,359 @@
+/**
+ * רספונסיביות גלובלית — כל העמודים וכל סוגי המשתמשים.
+ * משתמש במשתני ריווח אחידים; לא משנה צבעים או טיפוגרפיה בסיסית.
+ */
+
+:root {
+  --page-gutter: clamp(12px, 3.5vw, 18px);
+  --page-max: 1180px;
+  --content-max: 1100px;
+}
+
+html {
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: clip;
+  min-width: 320px;
+}
+
+/* —— מעטפת האתר —— */
+.appLayout {
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.appLayout__main {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+/* מדיה ותוכן שלא יגלוש */
+img,
+video,
+svg,
+canvas,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* —— מעטפות עמודים (padding אחיד במובייל) —— */
+.page,
+.page--seminaries,
+.homeContainer,
+.about,
+.askRabbiPage,
+.qaPageShell,
+.qaLecturerPage,
+.managerPage,
+.dash,
+.waApp {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.page,
+.page--seminaries {
+  padding: var(--page-gutter);
+}
+
+.homeContainer {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+.about,
+.askRabbiPage,
+.qaPageShell,
+.qaLecturerPage,
+.managerPage {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+.dash {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+.waApp {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+/* —— כותרות עמוד —— */
+.pageHero {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.pageHero__inner,
+.pageHero__lead {
+  max-width: 100%;
+}
+
+.pageHero__stat,
+.pageHero__badge {
+  max-width: 100%;
+}
+
+/* —— כרטיסים ושורות —— */
+.card--row {
+  flex-wrap: wrap;
+}
+
+.card__meta {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* —— טבלאות וגלילה אופקית —— */
+.enrollmentTableWrap,
+.tableScroll,
+.overflowScrollX {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+
+/* —— כפתורים בשורה —— */
+.siteBtnRow,
+.dashBtnRow,
+.hero__actions,
+.homeHero__actions,
+.aboutCta,
+.managerCard__actions,
+.seminaryCard__topActions {
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.siteBtnRow .siteBtn,
+.siteBtnRow .btn2,
+.dashBtnRow .dashBtn {
+  flex: 1 1 auto;
+  min-width: min(100%, 140px);
+}
+
+/* —— טפסים קטנים —— */
+.miniForm {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+/* —— עמוד הבית —— */
+.homeHero {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+.homeStats {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+.homeHero__actions {
+  width: 100%;
+}
+
+.homeHero__actions .siteBtn,
+.homeHero__actions .homeHero__btn {
+  flex: 1 1 auto;
+  min-width: min(100%, 160px);
+  justify-content: center;
+}
+
+/* —— מדרשיות: פעולות בכרטיס —— */
+.seminaryCard__top {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.seminaryCard__brand {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* —— צ'אט שאל את הרב —— */
+.askStaff__grid {
+  grid-template-columns: repeat(auto-fill, minmax(min(96px, 28vw), 1fr));
+}
+
+/* —— נקודות שבירה —— */
+@media (max-width: 960px) {
+  .pageHero__searchRow {
+    max-width: 100%;
+  }
+
+  .pageHero__searchField {
+    flex: 1 1 100%;
+  }
+
+  .card--row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .card__meta {
+    width: 100%;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 720px) {
+  .pageHero__row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pageHero__stat,
+  .pageHero__badge {
+    align-self: flex-start;
+    white-space: normal;
+  }
+
+  .pageHero--fullBleed {
+    margin-left: calc(-1 * var(--page-gutter));
+    margin-right: calc(-1 * var(--page-gutter));
+    border-radius: 0 0 16px 16px;
+  }
+
+  .about .pageHero--fullBleed,
+  .about .aboutHero {
+    margin-left: calc(-1 * var(--page-gutter));
+    margin-right: calc(-1 * var(--page-gutter));
+  }
+
+  .dashTabs {
+    gap: 6px;
+  }
+
+  .dashTabs__btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: center;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .managerCard__top {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .managerCard__actions {
+    justify-content: stretch;
+    width: 100%;
+  }
+
+  .managerCard__actions .siteBtn,
+  .managerCard__actions .dashBtn {
+    flex: 1 1 auto;
+  }
+
+  .seminaryJoin__btn {
+    white-space: normal;
+    text-align: center;
+    width: 100%;
+  }
+
+  .enrollmentFilters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .enrollmentFilters__field {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  :root {
+    --page-gutter: 12px;
+  }
+
+  .miniForm {
+    grid-template-columns: 1fr;
+  }
+
+  .homeStats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .homeStat {
+    padding: 16px 14px;
+  }
+
+  .homeHero__float {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .nav__auth {
+    gap: 6px;
+  }
+
+  .pageHero__title {
+    font-size: 1.35rem;
+  }
+
+  .authCard__head,
+  .authCard__body,
+  .authCard__foot {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .siteBtn--block,
+  .actions .siteBtn,
+  .actions--stack .siteBtn {
+    width: 100%;
+  }
+
+  .aboutList li {
+    padding: 12px 14px 12px 36px;
+    font-size: 14px;
+  }
+
+  .aboutQuote {
+    padding: 18px 16px;
+    font-size: 15px;
+  }
+
+  .qaFeed--embedded {
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .askStaff__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .homeHero__collage {
+    gap: 8px;
+  }
+}
+
+/* מניעת זום iOS בשדות — גודל מינימלי */
+@media (max-width: 520px) {
+  .input2,
+  .input,
+  .pageHero__searchInput,
+  select.input2,
+  select.input {
+    font-size: 16px;
+  }
+}

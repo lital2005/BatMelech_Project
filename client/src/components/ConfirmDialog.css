@@ -1,0 +1,133 @@
+/* חלון אישור מרכזי — צבעי האתר */
+
+.confirmDlg {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  animation: confirmDlgFadeIn 0.18s ease;
+}
+
+@keyframes confirmDlgFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.confirmDlg__box {
+  width: min(100%, 380px);
+  padding: 22px 22px 18px;
+  border-radius: var(--site-radius-lg, 14px);
+  background: #fff;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow:
+    0 24px 48px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  text-align: center;
+  animation: confirmDlgPop 0.22s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+@keyframes confirmDlgPop {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.confirmDlg__icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 12px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 1.35rem;
+  background: var(--site-accent-soft, rgba(99, 102, 241, 0.14));
+  color: var(--site-accent-deep, #4f46e5);
+}
+
+.confirmDlg__box--danger .confirmDlg__icon {
+  background: rgba(239, 68, 68, 0.12);
+  color: #b91c1c;
+}
+
+.confirmDlg__title {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.confirmDlg__message {
+  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #475569;
+}
+
+.confirmDlg__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.confirmDlg__btn {
+  min-width: 100px;
+  padding: 10px 18px;
+  border-radius: var(--site-radius, 10px);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
+}
+
+.confirmDlg__btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.confirmDlg__btn--cancel {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+
+.confirmDlg__btn--cancel:hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.confirmDlg__btn--confirm {
+  background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
+  border-color: rgba(129, 140, 248, 0.6);
+  color: #312e81;
+}
+
+.confirmDlg__btn--confirm:hover:not(:disabled) {
+  filter: brightness(1.04);
+}
+
+.confirmDlg__btn--danger {
+  background: #dc2626;
+  border-color: #b91c1c;
+  color: #fff;
+}
+
+.confirmDlg__btn--danger:hover:not(:disabled) {
+  background: #b91c1c;
+}

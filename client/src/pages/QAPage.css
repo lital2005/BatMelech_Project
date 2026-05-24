@@ -1,0 +1,65 @@
+/* פריסת עמוד שאלות ותשובות — פאנל צד + פיד */
+
+.qaPageShell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: clip;
+}
+
+.qaPageShell__aside {
+  position: sticky;
+  top: 12px;
+}
+
+.qaPageShell__main {
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.qaPageShell__intro.pageHero {
+  overflow: visible;
+}
+
+.qaPageShell__intro .pageHero__inner {
+  text-align: center;
+}
+
+.qaPageShell__intro .pageHero__lead {
+  margin-inline: auto;
+}
+
+.qaPageShell--noAside {
+  grid-template-columns: 1fr;
+  max-width: 960px;
+}
+
+/* כותרת העמוד — styles/pageHero.css */
+
+.qaPageShell__inlineLink {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.qaPageShell__inlineLink:hover {
+  color: var(--site-accent, #6366f1);
+}
+
+@media (max-width: 960px) {
+  .qaPageShell {
+    grid-template-columns: 1fr;
+  }
+
+  .qaPageShell__aside {
+    position: relative;
+    top: auto;
+  }
+}

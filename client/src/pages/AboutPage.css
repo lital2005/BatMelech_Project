@@ -1,0 +1,199 @@
+/* עמוד אודות */
+
+.about {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 18px 18px 56px;
+}
+
+.about .aboutHero {
+  margin-bottom: 36px;
+  padding: clamp(32px, 6vw, 52px) 20px clamp(28px, 5vw, 44px);
+  border-top: 0;
+  border-radius: 0 0 28px 28px;
+}
+
+.aboutProse {
+  font-size: 16px;
+  line-height: 1.85;
+  color: rgba(15, 23, 42, 0.88);
+}
+
+.aboutProse p {
+  margin: 0 0 1.15em;
+}
+
+.aboutProse p:last-child {
+  margin-bottom: 0;
+}
+
+.aboutProse strong {
+  color: #1e1b4b;
+  font-weight: 850;
+}
+
+.aboutDivider {
+  height: 1px;
+  margin: 36px 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(99, 102, 241, 0.25),
+    rgba(34, 197, 94, 0.2),
+    transparent
+  );
+  border: 0;
+}
+
+.aboutSectionTitle {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #6366f1;
+}
+
+.aboutH3 {
+  margin: 0 0 18px;
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-weight: 950;
+  letter-spacing: -0.2px;
+  color: #0f172a;
+}
+
+.aboutValues {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+@media (min-width: 640px) {
+  .aboutValues {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.aboutValue {
+  border-radius: 18px;
+  padding: 20px 18px;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.aboutValue:hover {
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.09);
+  transform: translateY(-2px);
+}
+
+.aboutValue__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  margin-bottom: 12px;
+  background: linear-gradient(145deg, rgba(99, 102, 241, 0.12), rgba(139, 92, 246, 0.08));
+}
+
+.aboutValue__title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 950;
+}
+
+.aboutValue__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(15, 23, 42, 0.72);
+}
+
+.aboutList {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.aboutList li {
+  position: relative;
+  padding: 14px 16px 14px 44px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.aboutList li::before {
+  content: "◆";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: #6366f1;
+  opacity: 0.85;
+}
+
+.aboutQuote {
+  margin: 40px 0 0;
+  padding: 26px 24px 26px 28px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(34, 197, 94, 0.06));
+  border-right: 4px solid #6366f1;
+  font-size: 17px;
+  font-weight: 750;
+  line-height: 1.65;
+  color: #1e293b;
+  font-style: italic;
+}
+
+.aboutQuote footer {
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 800;
+  font-style: normal;
+  color: rgba(15, 23, 42, 0.5);
+}
+
+.aboutCta {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  flex-direction: row-reverse;
+}
+
+.aboutCta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 15px;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background: #fff;
+  color: #312e81;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+}
+
+.aboutCta a:hover {
+  transform: translateY(-2px);
+}
+
+.aboutCta a:first-child {
+  background: linear-gradient(135deg, #6366f1, #7c3aed);
+  color: #fff;
+  border: 0;
+  box-shadow: 0 10px 28px rgba(99, 102, 241, 0.35);
+}

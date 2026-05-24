@@ -1,0 +1,50 @@
+.collapsibleText {
+  margin: 0 0 14px;
+}
+
+.collapsibleText--answer {
+  margin-bottom: 0;
+}
+
+.collapsibleText__body {
+  margin: 0;
+  font-size: inherit;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.collapsibleText__toggle {
+  display: inline-flex;
+  margin-top: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  color: #4f46e5;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.collapsibleText__toggle:hover {
+  color: #4338ca;
+}
+
+.qaFeed__card .collapsibleText__body.qaFeed__question {
+  font-size: 14px;
+  color: inherit;
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.qaFeed__card .collapsibleText__body.qaFeed__answer {
+  font-size: 13px;
+  color: inherit;
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}

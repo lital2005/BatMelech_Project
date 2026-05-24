@@ -1,0 +1,637 @@
+/* ציבורי — פס שאלות ותשובות */
+.qaFeed {
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 20px;
+  padding: 22px 18px 26px;
+  background:
+    radial-gradient(800px 200px at 0% 0%, rgba(99, 102, 241, 0.2), transparent),
+    radial-gradient(600px 180px at 100% 100%, rgba(236, 72, 153, 0.12), transparent),
+    linear-gradient(165deg, #0f172a 0%, #1e1b4b 55%, #0c1222 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.2);
+}
+
+.qaFeed__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.qaFeed__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin-bottom: 18px;
+}
+
+.qaFeed__title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  font-weight: 950;
+  letter-spacing: -0.4px;
+  color: #fff;
+}
+
+.qaFeed__subtitle {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 520px;
+}
+
+.qaFeed__link {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: background 0.15s ease, transform 0.12s ease;
+  white-space: nowrap;
+}
+
+.qaFeed__link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.qaFeed__track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 4px 2px 14px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.qaFeed__track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.qaFeed__track::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+}
+
+.qaFeed--light {
+  background:
+    radial-gradient(900px 220px at 100% 0%, rgba(99, 102, 241, 0.09), transparent),
+    radial-gradient(700px 200px at 0% 100%, rgba(16, 185, 129, 0.07), transparent),
+    linear-gradient(180deg, #f8fafc 0%, #ffffff 52%, #f1f5f9 100%);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 8px 32px rgba(15, 23, 42, 0.06);
+}
+
+.qaFeed--light .qaFeed__title {
+  color: #0f172a;
+}
+
+.qaFeed--light .qaFeed__subtitle {
+  color: #64748b;
+}
+
+.qaFeed--light .qaFeed__empty,
+.qaFeed--light .qaFeed__err {
+  background: #fff;
+  border-color: rgba(15, 23, 42, 0.12);
+  color: #64748b;
+}
+
+.qaFeed--light .qaFeed__err {
+  border-color: rgba(248, 113, 113, 0.35);
+  color: #b91c1c;
+}
+
+.qaFeed--embedded {
+  margin: 16px 0 0;
+  border-radius: 22px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
+  overflow: visible;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.qaFeed--embedded.qaFeed--light {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.qaFeed__track--grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 14px;
+  overflow: visible;
+  padding: 4px 0 10px;
+  scroll-snap-type: none;
+}
+
+.qaFeed__track--grid::-webkit-scrollbar {
+  display: none;
+}
+
+.qaFeed__track--grid .qaFeed__card {
+  flex: none;
+  scroll-snap-align: unset;
+  min-width: 0;
+}
+
+/* עמוד שאלות ותשובות — כרטיס אחד מתחת לשני */
+.qaFeed__track--stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow: visible;
+  padding: 4px 0 12px;
+  scroll-snap-type: none;
+}
+
+.qaFeed__track--stack .qaFeed__card {
+  flex: none;
+  width: 100%;
+  max-width: 100%;
+  scroll-snap-align: unset;
+}
+
+.qaFeed__card {
+  flex: 0 0 min(340px, 88vw);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 18px 18px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  text-align: right;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.qaFeed__block {
+  border-radius: 14px;
+  padding: 14px 14px 12px;
+  direction: rtl;
+  text-align: right;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.qaFeed__block--q {
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.qaFeed__block--a {
+  background: rgba(34, 197, 94, 0.07);
+}
+
+.qaFeed__blockHead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.qaFeed__block .collapsibleText,
+.qaFeed__block .qaFeed__question,
+.qaFeed__block .qaFeed__answer--full {
+  margin-bottom: 0;
+}
+
+.qaFeed__pill {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin-bottom: 0;
+}
+
+.qaFeed__pill--q {
+  background: rgba(99, 102, 241, 0.35);
+  color: #e0e7ff;
+}
+
+.qaFeed__pill--a {
+  background: rgba(34, 197, 94, 0.28);
+  color: #dcfce7;
+}
+
+/* שם + עיגול בצד ימין (מעל «שאלה» / «תשובה») */
+.qaFeed__person {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0;
+  min-width: 0;
+}
+
+.qaFeed__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 950;
+  font-size: 15px;
+  color: #fff;
+  flex-shrink: 0;
+  background: linear-gradient(145deg, rgba(99, 102, 241, 0.95), rgba(139, 92, 246, 0.85));
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.qaFeed__avatar--lecturer {
+  background: linear-gradient(145deg, rgba(16, 185, 129, 0.95), rgba(5, 150, 105, 0.88));
+}
+
+.qaFeed__nameBlock {
+  min-width: 0;
+  text-align: right;
+}
+
+.qaFeed__name {
+  font-weight: 900;
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.25;
+}
+
+.qaFeed__role {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 2px;
+}
+
+.qaFeed__question {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.qaFeed__connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.qaFeed__connectorDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #818cf8, #6366f1);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+.qaFeed__card--light .qaFeed__connectorDot {
+  background: linear-gradient(145deg, #34d399, #10b981);
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
+}
+
+.qaFeed__answer {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.qaFeed__question--full,
+.qaFeed__answer--full {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.qaFeed__card--light {
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+  backdrop-filter: none;
+}
+
+.qaFeed__card--light .qaFeed__block--q {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.07) 0%,
+    rgba(139, 92, 246, 0.04) 100%
+  );
+  border: 1px solid rgba(99, 102, 241, 0.14);
+}
+
+.qaFeed__card--light .qaFeed__block--a {
+  background: linear-gradient(
+    135deg,
+    rgba(16, 185, 129, 0.07) 0%,
+    rgba(5, 150, 105, 0.04) 100%
+  );
+  border: 1px solid rgba(16, 185, 129, 0.14);
+}
+
+.qaFeed__card--light .qaFeed__name {
+  color: #0f172a;
+}
+
+.qaFeed__card--light .qaFeed__role {
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.qaFeed__card--light .qaFeed__question,
+.qaFeed__card--light .collapsibleText__body.qaFeed__question {
+  color: #1e293b;
+}
+
+.qaFeed__card--light .qaFeed__answer,
+.qaFeed__card--light .collapsibleText__body.qaFeed__answer {
+  color: #334155;
+}
+
+
+.qaFeed__card--light .qaFeed__pill--q {
+  background: rgba(99, 102, 241, 0.14);
+  color: rgba(67, 56, 202, 0.95);
+}
+
+.qaFeed__card--light .qaFeed__pill--a {
+  background: rgba(34, 197, 94, 0.14);
+  color: rgba(21, 128, 61, 0.95);
+}
+
+.qaPageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.qaPendingCard {
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  background: #fff;
+  padding: 16px;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+  text-align: right;
+}
+
+.qaPendingCard__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  direction: rtl;
+  margin-bottom: 10px;
+}
+
+.qaPendingCard__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 950;
+  color: #fff;
+  background: linear-gradient(145deg, rgba(99, 102, 241, 0.92), rgba(139, 92, 246, 0.8));
+}
+
+.qaPendingCard__name {
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.qaPendingCard__role {
+  font-size: 12px;
+  opacity: 0.65;
+  margin-top: 2px;
+}
+
+.qaPendingCard__q {
+  margin: 0;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.qaPendingCard__tag {
+  display: inline-flex;
+  margin-top: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  background: rgba(251, 191, 36, 0.22);
+  color: #b45309;
+}
+
+.qaFeed__empty,
+.qaFeed__err {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 14px;
+  text-align: center;
+}
+
+.qaFeed__err {
+  border-color: rgba(248, 113, 113, 0.35);
+  color: #fecaca;
+}
+
+/* מרצה — תיבת ניהול */
+.qaLecturer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 18px 40px;
+}
+
+.qaLecturer__title {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  font-weight: 950;
+}
+
+.qaLecturer__lead {
+  margin: 0 0 22px;
+  opacity: 0.75;
+  line-height: 1.5;
+}
+
+.qaLecturer__empty {
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(34, 197, 94, 0.08);
+  text-align: center;
+  font-weight: 700;
+}
+
+.qaLecturer__card {
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #fff;
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+}
+
+.qaLecturer__asker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row-reverse;
+  margin-bottom: 10px;
+}
+
+.qaLecturer__avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 950;
+  color: #fff;
+  background: linear-gradient(145deg, rgba(99, 102, 241, 0.92), rgba(139, 92, 246, 0.8));
+}
+
+.qaLecturer__meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.qaLecturer__name {
+  font-weight: 900;
+}
+
+.qaLecturer__role {
+  font-size: 12px;
+  opacity: 0.65;
+  margin-top: 2px;
+}
+
+.qaLecturer__qtext {
+  margin: 0 0 14px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+.qaLecturer__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+}
+
+.qaLecturer__btn {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--site-radius-lg);
+  border: 1px solid rgba(99, 102, 241, 0.38);
+  background: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--site-accent-deep);
+}
+
+.qaLecturer__btn:hover:not(:disabled) {
+  background: var(--site-accent-soft);
+}
+
+.qaLecturer__btn--send {
+  background: var(--site-accent-bg);
+  color: #fff;
+  border-color: var(--site-accent-border);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+}
+
+.qaLecturer__btn--send:hover:not(:disabled) {
+  background: rgb(99, 102, 241);
+}
+
+.qaLecturer__textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 96px;
+  margin-top: 12px;
+  margin-inline: auto;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  font: inherit;
+  resize: vertical;
+  box-sizing: border-box;
+  direction: rtl;
+  text-align: right;
+}
+
+.qaLecturer__textarea:focus {
+  outline: none;
+  border-color: rgba(99, 102, 241, 0.55);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/* עמוד מרצה — שיחות עם תלמידות */
+.qaLecturerPage {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+/* כותרת העמוד — styles/pageHero.css */
+
+.qaLecturerPage__chat {
+  margin-bottom: 32px;
+  min-height: 0;
+}
+
+.qaLecturerPage__legacy {
+  padding-top: 8px;
+  border-top: 1px dashed rgba(15, 23, 42, 0.12);
+}
+
+.qaLecturerPage__sectionTitle {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.qaLecturerPage__sectionLead {
+  margin: 0 0 14px;
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.45;
+}
