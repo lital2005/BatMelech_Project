@@ -4,13 +4,14 @@ const bcrypt = require('bcrypt');
 const { sendPasswordResetEmail } = require('../services/mailService');
 const { generateSecureToken, hashValue } = require('../utils/encryption');
 const { normalizeProfileImageUrl, isAllowedProfileImageUrl } = require('../utils/mediaUrl');
+const { getClientBaseUrl } = require('../config/clientOrigin');
 
 const RESET_TOKEN_BYTES = 32;
 const RESET_EXPIRES_MS =
     (Number(process.env.PASSWORD_RESET_EXPIRES_HOURS) || 1) * 60 * 60 * 1000;
 
 function clientBaseUrl() {
-    return String(process.env.CLIENT_URL ?? "http://localhost:3000").replace(/\/+$/, "");
+    return getClientBaseUrl();
 }
 
 /** ניקוי שדות מהטופס לפני שמירה — מונע כשלי ולידציה על טלפון/רווחים */

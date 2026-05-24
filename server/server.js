@@ -4,6 +4,7 @@ require('dotenv').config({ path: path.join(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
 const { connectDB } = require('./config/db');
+const { corsOriginCallback } = require('./config/clientOrigin');
 const {
   isSmtpConfigured,
   getSmtpMissingFields,
@@ -25,8 +26,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL ?? 'http://localhost:3000',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    origin: corsOriginCallback,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-User-Id'],
   })
 );
